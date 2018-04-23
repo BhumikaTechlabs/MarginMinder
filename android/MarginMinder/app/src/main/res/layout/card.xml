@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="16dp"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cv"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hsnt"
+                android:text="hsn code : "
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hsnv"
+                android:text="random_val"
+                android:layout_toRightOf="@+id/hsnt"
+                android:textSize="20sp"
+                android:layout_toEndOf="@+id/hsnt" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/salest"
+                android:text="sales : "
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/hsnt"
+                android:layout_alignParentStart="true"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/salesv"
+                android:text="random_val"
+                android:layout_toRightOf="@+id/salest"
+                android:textSize="20sp"
+                android:layout_toEndOf="@+id/salest"
+                android:layout_below="@+id/hsnt"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/purchaset"
+                android:text="purchase : "
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/salest"
+                android:layout_alignParentStart="true"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/purchasev"
+                android:text="random_val"
+                android:layout_toRightOf="@+id/purchaset"
+                android:textSize="20sp"
+                android:layout_toEndOf="@+id/purchaset"
+                android:layout_below="@+id/salesv"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tradet"
+                android:text="trade margin : "
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/purchaset"
+                android:layout_alignParentStart="true"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tradev"
+                android:text="random_val"
+                android:layout_toRightOf="@+id/tradet"
+                android:textSize="20sp"
+                android:layout_toEndOf="@+id/tradet"
+                android:layout_below="@+id/purchasev"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

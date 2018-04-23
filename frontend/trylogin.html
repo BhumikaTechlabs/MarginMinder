@@ -1,0 +1,170 @@
+<html>
+<head>
+  <title>
+    Login Page
+  </title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script>
+var username;
+var password;
+var myurl;
+var token;
+
+function signin()
+{
+    username=document.getElementById("username").value;
+    password=document.getElementById("password").value;
+    myurl= "http://ws.ankitpati.in:8081/api/auth?email="+username+"&password="+password;
+
+    if (username == "bhumika.saini@sitpune.edu.in" && password == "bhumika") {
+     window.open('file:///C:/Users/hp/Desktop/Project/inbox.html');
+} else if (username == "jaanvi.juneja@sitpune.edu.in" && password == "jaanvi") {
+     window.open('file:///C:/Users/hp/Desktop/Project/detail.html');
+} else {
+    alert("Data is Invalid!");
+}
+}
+  
+
+  </script>
+
+
+
+<style>
+
+    b {
+      color: grey;
+      text-align: left;
+    }
+  img
+  {
+    width: 30%;
+    height: 30%;
+  }
+.space
+{
+  height: 10%;
+  text-align: center;
+  text-
+}
+</style>
+
+</head>
+
+<body class="blue-grey lighten-3">
+
+
+
+  <nav class="#00695c teal darken-3">
+    <div class="nav-wrapper">
+      <div class="brand-logo center">
+      Margin Minder
+    </div>
+    </div>
+  </nav>
+<div class="container">
+  <div class="login">
+    <div class="row valign-wrapper" style="align-content: center;">
+       <div class="col s6 offset-s3 valign">
+         <div class="card teal lighten-5">
+           <div class="card-content white-text">
+             <div class="center">
+            <span class="card-title"><b><font size = "8">Login</font></b></span>
+            </div>
+            <br>
+          <form method="GET">
+            <div class="center">
+              <img class="responsive-img" src="flag.png">
+            </div>
+          <br>
+          <div class="container">
+             <label><b><font size = "4"> Username</font></b></label>
+             <input type="text" style= "color:black" placeholder="Enter your Name" id="username" required>
+
+             <label><b><font size = "4">Password</font></b></label>
+             <input type="password" style= "color:black" placeholder="Enter your Password" id="password" required>
+
+             <button class="waves-effect waves-light btn" type="submit" onclick="signin()">Login</button>
+           </div>
+           </form>
+           <p id="signup"; style="color: black">Don't have account? <a class="snup" href="#" id="signup">Sign up here</a></p>
+         </div>
+       </div>
+  </div>
+</div>
+
+
+
+</div>
+
+<div class="signup">
+  <div class="row valign-wrapper" style="align-content: center;">
+     <div class="col s6 offset-s3 valign">
+       <div class="card teal lighten-5">
+         <div class="card-content white-text">
+          <div class="center">
+        <span class="card-title"><b><font size = "8">Signup</font></b></span>
+      </div>
+
+      <br>
+         <form method="POST">
+           <div class="center">
+             <img class="responsive-img" src="flag.png">
+           </div>
+        <br>
+         <div class="container">
+            <b><font size = "4"> Name</font></b>
+            <input type="text" placeholder="Enter your Name" name="name" required>
+            <b><font size = "4">Company Name</font></b>
+            <input type="text" placeholder="Enter your Company Name" name="compname" required>
+
+            <b><font size = "4"> Email address</font></b>
+            <input type="email" placeholder="Enter your Email Address" name="email" required>
+
+            <b><font size = "4">GSTN no</font></b>
+            <input type="text" placeholder="Enter your Password" name="gstn" required>
+
+            <b><font size = "4"> Company address</font></b>
+            <input type="text" placeholder="Enter your Name" name="compadd" required>
+
+            <b><font size = "4">Password :</font></b>
+            <input type="password" name="password2" id="password2" required>
+
+            <b><font size = "4">Confirm Password :</font></b>
+            <input type="password" name="cpassword" id="cpassword" required>
+
+
+           <button class="waves-effect waves-light btn" type="submit">Register</button>
+          </div>
+          </form>
+        <p id="login"; style="color: black">Already have an account? <a class="sign" href="#" id="login">Sign in</a></p>
+        </div>
+      </div>
+ </div>
+ </div>
+</div>
+
+</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>
+
+  $(document).ready(function(){
+      $(".signup").hide();
+      $("#signup").click(function(event){
+          event.preventDefault();
+          $(".login").fadeToggle("slow");
+          $(".signup").toggle(1000);
+      });
+      $("#login").click(function(event){
+          event.preventDefault();
+          $(".signup").fadeToggle("slow");
+          $(".login").toggle(1000);
+      });
+  });
+</script>
+</body>
+</html>

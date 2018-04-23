@@ -1,0 +1,333 @@
+<html>
+  <head>
+    <title>
+      Details Page
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+
+ <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+    <script type="text/javascript">
+      function formdata()
+      {
+         M.toast({html: 'I am a toast!', classes: 'rounded'});
+        var jshsn1=document.getElementById("hsn1").value;
+        var jssale1=document.getElementById("salesprice1").value;
+        var jspurchase1=document.getElementById("purchaseprice1").value;
+        var jstrade1=document.getElementById("trademargin1").value;
+         
+         var jshsn2=document.getElementById("hsn2").value;
+        var jssale2=document.getElementById("salesprice2");
+        var jspurchase2=document.getElementById("purchaseprice2").value;
+        var jstrade2=document.getElementById("trademargin2").value;
+
+        var jshsn3=document.getElementById("hsn3").value;
+        var jssale3=document.getElementById("salesprice3").value;
+        var jspurchase3=document.getElementById("purchaseprice3").value;
+        var jstrade3=document.getElementById("trademargin13").value;
+
+        var jshsn4=document.getElementById("hsn4").value;
+        var jssale4=document.getElementById("salesprice4").value;
+        var jspurchase4=document.getElementById("purchaseprice4").value;
+        var jstrade4=document.getElementById("trademargin4").value;
+
+        var jshsn5=document.getElementById("hsn5").value;
+        var jssale5=document.getElementById("salesprice5").value;
+        var jspurchase5=document.getElementById("purchaseprice5").value;
+        var jstrade5=document.getElementById("trademargin5").value;
+
+        var totalturnover1=document.getElementById("totalturnover").value;
+
+        if(jshsn1==null)
+        {
+          alert("Please fill all the field!");
+        }
+        else
+        {
+           
+        }
+      }
+    </script>
+</head>
+
+
+
+<body class="#e0f2f1 teal lighten-5">
+
+    
+  <nav class="#00695c teal darken-3">
+     <div class="nav-wrapper">
+       <a href="#" class="brand-logo">Margin Minder</a>
+       <ul id="nav-mobile" class="right hide-on-med-and-down">
+         <li><a href="sass.html">Home</a></li>
+         <li><a href="detail.html">Inbox</a></li>
+         <li><a href="form.html">Send Response</a></li>
+        </ul>
+     </div>
+   </nav>
+
+<div>
+
+<div class="row valign-wrapper" style="align-content: center; vertical-align: middle;">
+   <div class="col s6 offset-s3 valign">
+     <div class="card blue-grey darken-1">
+       <div class="card-content white-text">
+         <span class="card-title">First Product Form</span>
+        <div class="row">
+    <form class="col xl12">
+      <div class="row">
+        
+        <div class="input-field col xs6">
+          <input id="hsn1" type="text" class="validate" required>
+          <label for="hsn1">HSN</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="salesprice1" type="text" class="validate" required>
+          <label for="salesprice1">Sales Price</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="purchaseprice1" type="text" class="validate" required>
+          <label for="purchaseprice1">Purchase Price</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="trademargin1" type="text" class="validate" required>
+          <label for="trademargin1">Trade Margin</label>
+        </div>
+      </div>
+      </form>
+    </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<div>
+
+<div class="row valign-wrapper" style="align-content: center; vertical-align: middle;">
+   <div class="col s6 offset-s3 valign">
+     <div class="card blue-grey darken-1">
+       <div class="card-content white-text">
+         <span class="card-title">Second Product Form</span>
+        <div class="row">
+    <form class="col xl12">
+      <div class="row">
+        
+        <div class="input-field col xs6">
+          <input id="hsn2" type="text" class="validate" required>
+          <label for="hsn2">HSN</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="salesprice2" type="text" class="validate" required>
+          <label for="salesprice2">Sales Price</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="purchaseprice2" type="text" class="validate" required>
+          <label for="purchaseprice2">Purchase Price</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="trademargin2" type="text" class="validate" required>
+          <label for="trademargin2">Trade Margin</label>
+        </div>
+      </div>
+      </form>
+    </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<div>
+
+<div class="row valign-wrapper" style="align-content: center; vertical-align: middle;">
+   <div class="col s6 offset-s3 valign">
+     <div class="card blue-grey darken-1">
+       <div class="card-content white-text">
+         <span class="card-title">Third Product Form</span>
+        <div class="row">
+    <form class="col xl12">
+      <div class="row">
+        
+        <div class="input-field col xs6">
+          <input id="hsn3" type="text" class="validate" required>
+          <label for="hsn3">HSN</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="salesprice3" type="text" class="validate" required>
+          <label for="salesprice3">Sales Price</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="purchaseprice3" type="text" class="validate" required>
+          <label for="purchaseprice3">Purchase Price</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="trademargin3" type="text" class="validate" required>
+          <label for="trademargin3">Trade Margin</label>
+        </div>
+      </div>
+      </form>
+    </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<div>
+
+<div class="row valign-wrapper" style="align-content: center; vertical-align: middle;">
+   <div class="col s6 offset-s3 valign">
+     <div class="card blue-grey darken-1">
+       <div class="card-content white-text">
+         <span class="card-title">Fourth Product Form</span>
+        <div class="row">
+    <form class="col xl12">
+      <div class="row">
+        
+        <div class="input-field col xs6">
+          <input id="hsn4" type="text" class="validate" required>
+          <label for="hsn4">HSN</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="salesprice4" type="text" class="validate" required>
+          <label for="salesprice4">Sales Price</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="purchaseprice4" type="text" class="validate" required>
+          <label for="purchaseprice4">Purchase Price</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="trademargin4" type="text" class="validate" required>
+          <label for="trademargin4">Trade Margin</label>
+        </div>
+      </div>
+      </form>
+    </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<div>
+
+<div class="row valign-wrapper" style="align-content: center; vertical-align: middle;">
+   <div class="col s6 offset-s3 valign">
+     <div class="card blue-grey darken-1">
+       <div class="card-content white-text">
+         <span class="card-title">Fifth Product Form</span>
+        <div class="row">
+    <form class="col xl12">
+      <div class="row">
+        
+        <div class="input-field col xs6">
+          <input id="hsn5" type="text" class="validate" required>
+          <label for="hsn5">HSN</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="salesprice5" type="text" class="validate" required>
+          <label for="salesprice5">Sales Price</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="purchaseprice5" type="text" class="validate" required>
+          <label for="purchaseprice5">Purchase Price</label>
+        </div>
+        <div class="input-field col xs6">
+          <input id="trademargin5" type="text" class="validate" required>
+          <label for="trademargin5">Trade Margin</label>
+        </div>
+      </div>
+      </form>
+    </div>
+       </div>
+     </div>
+   </div>
+ </div>
+<div class="row valign-wrapper" style="align-content: center; vertical-align: middle;">
+   <div class="col s6 offset-s3 valign">
+     <div class="card blue-grey darken-1">
+       <div class="card-content white-text">
+        <span class="card-title">Total Turnover</span>
+          <div class="row">
+    <form class="col xl12">
+      <div class="row">
+        
+        <div class="input-field col s6">
+          <input id="totalturnover" type="text" class="validate" required>
+          <label for="totalturnover">Turnover</label>
+        </div>
+      </div>
+      </form>
+    </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+
+<div class="#6a1b9a purple darken-3">
+ <div data-target="modal1" class="modal-trigger" style="align-content: right">
+<div class="fixed-action-btn">
+ <a class="btn-floating btn-large red">
+   <i class="large material-icons"></i><img src="edit.png">
+ </a>
+</div>
+</div>
+</div>
+
+ </div>
+<div data-target="modal1" class="modal-trigger" style="align-content: right">
+<div class="fixed-action-btn">
+ <a class="btn-floating btn-large #00695c teal darken-3">
+   <i class="large material-icons">send</i>
+ </a>
+</div>
+</div>
+<!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Alert</h4>
+      <label style="color: black; font-size: 20px">Do you want to submit the response?</label>
+    </div>
+    <div class="modal-footer">
+      <button class="btn waves-effect waves-light" type="submit" name="action" style="background: black" onclick="formdata()">Submit</button>
+    </div>
+  </div>
+      <br><br>
+
+    </div>
+  </div>
+
+
+<script>
+$(document).ready(function() {
+  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $('.modal-trigger').leanModal();
+});
+$(document).ready(function() {
+    $('input#input_text, textarea#textarea2').characterCounter();
+  });
+
+ $(document).ready(function() {
+    M.updateTextFields();
+  });
+
+</script> 
+</body>
+</html>

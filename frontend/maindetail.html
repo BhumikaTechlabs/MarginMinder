@@ -1,0 +1,612 @@
+<html>
+  <head>
+    <title>
+      Details Page
+    </title>
+
+
+    <!-- Compiled and minified JavaScript -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <style>
+       .chart-container {
+        width: 100%;
+        height:500px;
+    }
+    </style>
+
+
+    <script type="text/javascript">
+
+
+
+    	function downloadCSV(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV file
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Hide download link
+    downloadLink.style.display = "none";
+
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+
+    // Click download link
+    downloadLink.click();
+}
+    </script>
+    <script type="text/javascript">
+    	function exportTableToCSV(filename) {
+    var csv = [];
+    var rows = document.querySelectorAll("table tr");
+
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+
+        for (var j = 0; j < cols.length; j++)
+            row.push(cols[j].innerText);
+
+        csv.push(row.join(","));
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\n"), filename);
+}
+    </script>
+
+  </script>
+
+
+
+    <script>
+
+
+    var x = [];
+    var y = [];
+    var z = [];
+    var sum = 0;
+      function CreateTableFromJSON() {
+          var top5 = [
+              {
+                "HSN no": "33061020",
+                "Sales": "1000",
+                "Purchase": "800",
+                "Trade Margins": "200"
+              },
+              {
+                "HSN no": "33061020",
+                "Sales": "1200",
+                "Purchase": "1050",
+                "Trade Margins": "150"
+              },
+              {
+                "HSN no": "33061020",
+                "Sales": "800",
+                "Purchase": "700",
+                "Trade Margins": "100"
+              },
+              {
+                "HSN no": "87056000",
+                "Sales": "1100",
+                "Purchase": "900",
+                "Trade Margins": "200"
+              },
+              {
+                "HSN no": "87056000",
+                "Sales": "1400",
+                "Purchase": "1300",
+                "Trade Margins": "100"
+              },
+              {
+                  "HSN no": "87056000",
+                  "Sales": "1800",
+                  "Purchase": "1600",
+                  "Trade Margins": "200"
+              },
+              {
+                "HSN no": "8705",
+                "Sales": "1100",
+                "Purchase": "900",
+                "Trade Margins": "200"
+              },
+              {
+                "HSN no": "8705",
+                "Sales": "1400",
+                "Purchase": "1300",
+                "Trade Margins": "100"
+              },
+              {
+                  "HSN no": "8705",
+                  "Sales": "1800",
+                  "Purchase": "1600",
+                  "Trade Margins": "200"
+              },
+              {
+                "HSN no": "3306",
+                "Sales": "1000",
+                "Purchase": "800",
+                "Trade Margins": "200"
+              },
+              {
+                "HSN no": "3306",
+                "Sales": "1200",
+                "Purchase": "1050",
+                "Trade Margins": "150"
+              },
+              {
+                "HSN no": "3306",
+                "Sales": "800",
+                "Purchase": "700",
+                "Trade Margins": "100"
+              },
+              {
+                  "HSN no": "63",
+                  "Sales": "2300",
+                  "Purchase":"2150",
+                  "Trade Margins": "150"
+              },
+              {
+                  "HSN no": "63",
+                  "Sales": "3700",
+                  "Purchase":"3500",
+                  "Trade Margins": "200"
+              },
+              {
+                  "HSN no": "63",
+                  "Sales": "3000",
+                  "Purchase":"2500",
+                  "Trade Margins": "500"
+              },
+              {
+                "HSN no": "66",
+                "Sales": "1100",
+                "Purchase": "900",
+                "Trade Margins": "200"
+              },
+              {
+                "HSN no": "66",
+                "Sales": "1400",
+                "Purchase": "1300",
+                "Trade Margins": "100"
+              },
+              {
+                  "HSN no": "66",
+                  "Sales": "1800",
+                  "Purchase": "1600",
+                  "Trade Margins": "200"
+              },
+          ];
+
+          // EXTRACT VALUE FOR HTML HEADER.
+          // ('Book ID', 'Book Name', 'Category' and 'Price')
+          var col = [];
+          for (var i = 0; i < top5.length; i++) {
+              for (var key in top5[i]) {
+                  if (col.indexOf(key) === -1) {
+                      col.push(key);
+                  }
+              }
+          }
+
+          // CREATE DYNAMIC TABLE.
+          var table = document.createElement("table");
+          table.setAttribute("id","myTable");
+
+          // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+          var tr = table.insertRow(-1);                   // TABLE ROW.
+
+          for (var i = 0; i < col.length; i++) {
+              var th = document.createElement("th");      // TABLE HEADER.
+              th.innerHTML = col[i];
+              tr.appendChild(th);
+          }
+
+          // ADD JSON DATA TO THE TABLE AS ROWS.
+          for (var i = 0; i < top5.length; i++) {
+              tr = table.insertRow(-1);
+
+
+              for (var j = 0; j < col.length; j++) {
+                  var tabCell = tr.insertCell(-1);
+                  tabCell.innerHTML = top5[i][col[j]];
+                  if(j==1)
+                    x.push(top5[i][col[j]]);
+                  if(j==0)
+                    z.push(top5[i][col[j]]);
+                  if(j==3)
+                    y.push(top5[i][col[j]]);
+              }
+          }
+          var count = 0;
+          var uniqhsn = [];
+          var summedhsn = [];
+          var k = 0;
+          for(var i = 0 ;i<10;i++)
+            summedhsn[i]=0;
+          var HSNcodes = [];
+          for(var i=0;i<z.length;i=i+count)
+          {
+            HSNcodes[k]=z[i];
+            var count = 0;
+            for(var j=i;j<z.length;j++)
+            {
+              if(z[i]==z[j])
+              {
+                summedhsn[k]=parseInt(summedhsn[k])+parseInt(y[j]);
+                count++;
+              }
+            }
+            k++
+          }
+          var max =-9999;
+          var maxhsn;
+          for(var j=0;j<summedhsn.length;j++)
+          {
+            if(summedhsn[j]>max)
+            {
+              max = summedhsn[j];
+              maxhsn = HSNcodes[j];
+            }
+          }
+
+          var hsn8 = [];
+          var hsn4 = [];
+          var hsn2 = [];
+          var tmar8 = [];
+          var tmar4 = [];
+          var tmar2 = [];
+
+          for(var i = 0;i< top5.length;i++)
+          {
+            if(top5[i][col[0]].length==8){
+              for(var j = 1 ; j<col.length;j++){
+                hsn8.push(top5[i][col[j]]);
+              }
+            }
+            if(top5[i][col[0]].length==4){
+              for(var j = 1 ; j<col.length;j++){
+                hsn4.push(top5[i][col[j]]);
+              }
+            }
+            if(top5[i][col[0]].length==2){
+              for(var j = 1 ; j<col.length;j++){
+                hsn2.push(top5[i][col[j]]);
+              }
+            }
+          }
+
+          var k=2;
+          for(var i=0;i<hsn8.length/3;i++){
+            tmar8.push(hsn8[k])
+            k=k+3;
+          }
+          var k=2;
+          for(var i=0;i<hsn2.length/3;i++){
+            tmar2.push(hsn2[k])
+            k=k+3;
+          }
+          var k=2;
+          for(var i=0;i<hsn4.length/3;i++){
+            tmar4.push(hsn4[k])
+            k=k+3;
+          }
+
+          var hsnarr = [0];
+          var no = prompt("Enter hsn no..");
+          alert(no);
+          //var no = document.getElementById("searchHSN");
+          for(var i=0;i<top5.length;i++)
+          {
+            if(no == top5[i][col[0]])
+              hsnarr.push(top5[i][col[3]]);
+          }
+
+          var sum = 0;
+          var gstn = ["GSTN24234","GSTN4546","GSTN4654"];
+
+
+          function exportTableToCSVT(filename) {
+          var csv = [];
+          for(var i=0;i<hsnarr.length;i++)
+          {
+            sum = parseInt(sum) + parseInt(hsnarr[i]);
+            }
+          var str=gstn.toString();
+          str = str + "," + sum;
+          csv.push(str);
+          downloadCSV(csv.join("\n"), filename);
+         }
+
+         exportTableToCSVT("Data.csv");
+
+          new Chart(document.getElementById("line-chart"), {
+          type: 'line',
+          data: {
+          labels: gstn,
+          datasets: [{
+              data: hsnarr,
+              label: no,
+              borderColor: "#3e95cd",
+              fill: false
+            },
+          ]
+          },
+          options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          title: {
+            display: true,
+            text: 'Compare two or more trade margins '
+          },
+          tooltips: {
+            position: "nearest",
+            mode: 'index',
+            intersect: false,
+          }
+          }
+          });
+
+
+          new Chart(document.getElementById("line-chart5"), {
+          type: 'bar',
+          data: {
+          labels: HSNcodes,
+          datasets: [{
+              data: summedhsn,
+              label: "Total",
+              borderColor: "#3e95cd",
+              fill: false
+            },
+          ]
+          },
+          options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          title: {
+            display: true,
+            text: 'Compare two or more trade margins '
+          },
+          tooltips: {
+            position: "nearest",
+            mode: 'index',
+            intersect: false,
+          }
+          }
+          });
+
+
+
+          // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+          var divContainer = document.getElementById("showData");
+          divContainer.innerHTML = "";
+          divContainer.appendChild(table);
+
+
+
+
+
+          new Chart(document.getElementById("line-chart1"), {
+          type: 'line',
+          data: {
+          labels: x,
+          datasets: [{
+              data: tmar8,
+              label: "HSN8",
+              borderColor: "#3e95cd",
+              fill: false
+            }
+          ]
+          },
+          options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          title: {
+            display: true,
+            text: 'Trade Margins per month '
+          }
+          }
+          });
+
+            new Chart(document.getElementById("line-chart1"), {
+            type: 'line',
+            data: {
+            labels: x,
+            datasets: [{
+                data: tmar8,
+                label: "HSN8",
+                borderColor: "#3e95cd",
+                fill: false
+              }
+            ]
+            },
+            options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+              display: true,
+              text: 'Trade Margins per month '
+            }
+            }
+            });
+
+            new Chart(document.getElementById("line-chart2"), {
+            type: 'line',
+            data: {
+            labels: x,
+            datasets: [
+              {
+                  data: tmar4,
+                  label: "HSN4",
+                  borderColor: "#3e95cd",
+                  fill: false
+                }
+
+            ]
+            },
+            options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+              display: true,
+              text: 'Trade Margins per month '
+            }
+            }
+            });
+
+            new Chart(document.getElementById("line-chart3"), {
+            type: 'line',
+            data: {
+            labels: x,
+            datasets:[
+                {
+                    data: tmar2,
+                    label: "HSN2",
+                    borderColor: "#3e95cd",
+                    fill: false
+                  }
+
+            ]
+            },
+            options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+              display: true,
+              text: 'Trade Margins per month '
+            }
+            }
+            });
+
+            new Chart(document.getElementById("Month-Wise-Trade-Margins"), {
+            type: 'bar',
+            data: {
+            labels: ["Maharastra","Andhra","Punjab","West Bengal"],
+            datasets: [{
+                data: [3000,2700,2500,2800],
+                label: "Trade Margins",
+                borderColor: "#3e95cd",
+                fill: true
+              }
+            ]
+            },
+            options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+              display: true,
+              text: 'State Wise Trade Margin Data'
+            }
+            }
+          });
+
+}
+  </script>
+  </head>
+  <body class="#e0f2f1 teal lighten-5" onload="CreateTableFromJSON()">
+
+
+      <nav class="#00695c teal darken-3">
+       <div class="nav-wrapper">
+         <a href="#" class="brand-logo">Margin Minder</a>
+         <ul id="nav-mobile" class="right hide-on-med-and-down">
+           <li><a href="Inbox.html">Inbox</a></li>
+           <li><a href="detail.html">Detail Page</a></li>
+           <li><a href="Inbox.html">Wrong messages</a></li>
+
+         </ul>
+       </div>
+     </nav>
+
+    <font size = "4">GSTN: </font>
+
+    <br>
+
+    <div>
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for HSN.." name="search">
+    </div>
+
+
+    <div id="showData"></div>
+    <button onclick="exportTableToCSV('HSNDetails.csv')">Export HTML Table To CSV File</button>
+
+      <div class="chart-container">
+        <canvas id="line-chart1" width="20" height="50"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="line-chart2" width="20" height="50"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="line-chart3" width="20" height="50"></canvas>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="Month-Wise-Trade-Margins" width="20" height="50"></canvas>
+      </div>
+
+
+
+      <div class="chart-container">
+        <canvas id="line-chart" width="20" height="50"></canvas>
+      </div>
+
+      <button onclick="PromptOpen()">Click to enter new HSN code</button>
+
+
+      <div class="chart-container">
+        <canvas id="line-chart5" width="20" height="50"></canvas>
+      </div>
+
+
+
+
+
+
+      <script>
+      function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+
+
+      function PromptOpen(){
+        location.reload();
+      }
+      </script>
+
+  </body>
+
+
+  </html>
